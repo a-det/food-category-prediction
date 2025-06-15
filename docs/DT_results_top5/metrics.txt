@@ -1,0 +1,18 @@
+Cross-validation scores: 0.5741, 0.5684, 0.5321, 0.5549, 0.5849
+Mean CV accuracy: 0.5629
+Standard deviation of CV accuracy: 0.0182
+
+Test accuracy: 0.5690
+
+Classification Report:
+                              precision    recall  f1-score   support
+
+         animal food product       0.61      0.66      0.64       261
+   food product by meal type       0.32      0.32      0.32        71
+      food product component       0.34      0.42      0.38        67
+multi-component food product       0.44      0.38      0.41       102
+          plant food product       0.67      0.63      0.65       376
+
+                    accuracy                           0.57       877
+                   macro avg       0.48      0.48      0.48       877
+                weighted avg       0.57      0.57      0.57       877
