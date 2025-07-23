@@ -39,11 +39,11 @@ def jaccard_similarity(str1, str2):
     return len(intersection) / len(union) if union else 0
 
 
-# Scorre tutte le classi presenti nell'ontologia caricata e, per ogni classe,
-# tenta di estrarre la sua etichetta intellegibile.
-# Questo dizionario permette di cercare rapidamente una classe dell'ontologia
-# partendo dalla sua etichetta o nome.
-# (es: tuna fillet (raw) -> FOODON_03309012).
+# Iterate through all classes in the loaded ontology and, for each class,
+# attempt to extract its human-readable label.
+# This dictionary allows quick lookup of ontology classes
+# starting from their label or name.
+# Example: "tuna fillet (raw)" -> FOODON_03309012
 label_to_class = {}
 for classe in onto.classes():
     try:
@@ -57,38 +57,38 @@ for classe in onto.classes():
         continue
 
 
-# Trova la classe dell'ontologia più simile ad un alimento del dataset
+# Find the ontology class most similar to a food item from the dataset
 def find_closest_class(food_name):
     if not label_to_class:
         return None
 
-    # Etichetta dell'ontologia (e quindi chiave del dizionario label_to_class)
-    # più simile all'alimento del dataset (ossia a food_name)
+    # Find the ontology label (and thus the key in the label_to_class dictionary)
+    # most similar to the food item from the dataset (i.e., food_name)
     best_label = max(
         label_to_class.keys(), key=lambda l: jaccard_similarity(food_name, l)
     )
 
-    # restituisce la classe (es. FOODON_03309012) associata alla chiave best_label
+    # Return the class (e.g., FOODON_03309012) associated with the best_label key
     return label_to_class[best_label]
 
 
-# Aggiunge una colonna al dataset avente come valore la classe dell'ontologia più simile
-# ad ogni alimento presente nel dataset.
+# Add a column to the dataset containing the most similar ontology class
+# for each food item present in the dataset
 df["FoodOn_Class"] = df["name"].apply(find_closest_class)
 
-# A questo punto per ogni alimento del dataset abbiamo la classe dell'ontologia
-# associata, ma non abbiamo ancora la categoria generale a cui appartiene il cibo
-# (es. "salad" ∈ "plant food product").
+# At this point, for each food item in the dataset we have the associated ontology class,
+# but we don't yet have the general category to which the food belongs
+# Example: "salad" ∈ "plant food product"
 
 
-# Data una classe dell’ontologia, risale la gerarchia delle classi “madri”
-# (usando la proprietà is_a)
+# Given an ontology class, traverse up the hierarchy of parent classes
+# (using the is_a property)
 def find_general_category(classe):
     try:
         if classe is None:
             return None
-        # Costruisce il percorso usando i genitori dalla classe attuale
-        # per arrivare alla classe "food product"
+        # Build the path using parents from the current class
+        # to reach the "food product" class
         path = []
         visited = set()
         current = classe
@@ -104,8 +104,8 @@ def find_general_category(classe):
                 break
             current = parents[0]
 
-        # scorre tutte le classi in path per cercare la categoria generale
-        # del cibo.
+        # Iterate through all classes in path to find the general category
+        # of the food.
         found_fp = False
         for classe, label in path:
             low = label.strip().lower()
@@ -116,10 +116,10 @@ def find_general_category(classe):
                 if "product" not in low or "by organism" not in low:
                     return label
 
-        # se è stata trovato un percorso che termina con "food product"
-        # ma nessuna delle altre classi del path ha un'etichetta valida,
-        # restituisce il genitore immediato della classe di cui si vuole
-        # trovare la categoria generale.
+        # If a path ending with "food product" was found
+        # but none of the other classes in the path have a valid label,
+        # return the immediate parent of the class for which we want
+        # to find the general category.
         if found_fp and len(path) > 1:
             return path[-1][1]
     except Exception as e:
