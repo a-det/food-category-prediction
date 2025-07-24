@@ -11,8 +11,8 @@ import joblib
 import os
 
 # Set results directory path
-RESULTS_DIR = "../docs/RF_results_top5_gridsearch"
-DATASET_PATH = "../data/nutrition_with_general_category_top5.csv"
+RESULTS_DIR = "../results/RF_results_top10_gridsearch"
+DATASET_PATH = "../data/nutrition_with_general_category.csv"
 
 # Load the dataset
 print("Loading dataset...")

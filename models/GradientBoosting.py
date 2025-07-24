@@ -7,7 +7,7 @@ import joblib
 import os
 
 # Set results directory path
-RESULTS_DIR = "../docs/GB_results_top10"
+RESULTS_DIR = "../results/GB_results_top10"
 DATASET_PATH = "../data/nutrition_with_general_category.csv"
 
 # Load the dataset

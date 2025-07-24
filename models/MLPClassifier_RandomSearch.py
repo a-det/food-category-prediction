@@ -12,7 +12,7 @@ import joblib
 import os
 
 # Set results directory path
-RESULTS_DIR = "../docs/MLP_results_top5_RU_randomsearch_run1"
+RESULTS_DIR = "../results/MLP_results_top5_RU_randomsearch_run1"
 DATASET_PATH = "../data/nutrition_with_general_category_top5_RU.csv"
 
 # Load the dataset
