@@ -1,0 +1,19 @@
+Cross-validation scores: 0.6937, 0.6994, 0.6819, 0.6847, 0.7118
+wStandard deviation of CV accuracy: 0.0108
+
+Best parameters: {'classifier__criterion': 'gini', 'classifier__max_depth': 30, 'classifier__max_features': 'log2', 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 2, 'classifier__n_estimators': 200}
+Best cross-validation accuracy: 0.6943
+Test accuracy: 0.6944
+
+Classification Report:
+                              precision    recall  f1-score   support
+
+         animal food product       0.75      0.73      0.74       261
+   food product by meal type       0.65      0.37      0.47        71
+      food product component       0.68      0.40      0.50        67
+multi-component food product       0.65      0.49      0.56       102
+          plant food product       0.68      0.84      0.75       376
+
+                    accuracy                           0.69       877
+                   macro avg       0.68      0.57      0.60       877
+                weighted avg       0.69      0.69      0.68       877
