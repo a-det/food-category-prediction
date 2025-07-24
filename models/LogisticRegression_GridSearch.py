@@ -7,8 +7,8 @@ import joblib
 import os
 
 # Set results directory path
-RESULTS_DIR = "../results/LR_results_top10_gridsearch"
-DATASET_PATH = "../data/nutrition_with_general_category.csv"
+RESULTS_DIR = "../results/LR_results_top5_gridsearch"
+DATASET_PATH = "../data/nutrition_with_general_category_top5.csv"
 # Load the dataset
 print("Loading dataset...")
 data = pd.read_csv(DATASET_PATH)
