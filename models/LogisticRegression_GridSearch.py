@@ -7,8 +7,8 @@ import joblib
 import os
 
 # Set results directory path
-RESULTS_DIR = "../results/LR_results_top5_RU_run3"
-DATASET_PATH = "../data/nutrition_with_general_category_top5_RU.csv"
+RESULTS_DIR = "../results/LR_results_top10_gridsearch"
+DATASET_PATH = "../data/nutrition_with_general_category.csv"
 # Load the dataset
 print("Loading dataset...")
 data = pd.read_csv(DATASET_PATH)
@@ -30,7 +30,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Train the model
 print("\nTraining Logistic Regression classifier...")
 pipeline = Pipeline(
-    [("classifier", LogisticRegression(max_iter=1000, random_state=42))]
+    [("classifier", LogisticRegression(max_iter=10000, random_state=42))]
 )
 
 param_grid = {

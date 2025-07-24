@@ -1,0 +1,25 @@
+Cross-validation scores: 0.5283, 0.5251, 0.5185, 0.5251, 0.5277
+Mean CV accuracy: 0.5249
+Standard deviation of CV accuracy: 0.0035
+
+Best parameters: {'classifier__C': 10, 'classifier__penalty': 'l2', 'classifier__solver': 'liblinear'}
+Best cross-validation accuracy: 0.5249
+Test accuracy: 0.5348
+
+Classification Report:
+                                     precision    recall  f1-score   support
+
+                animal food product       0.61      0.60      0.61       255
+                food product analog       0.67      0.17      0.27        12
+     food product by consumer group       1.00      0.10      0.17        21
+          food product by meal type       0.38      0.11      0.17        75
+             food product component       0.64      0.09      0.16        77
+food product type (to be processed)       0.00      0.00      0.00         2
+                fungus food product       0.00      0.00      0.00         2
+       multi-component food product       0.65      0.15      0.25        99
+                 plant food product       0.51      0.86      0.64       373
+             processed food product       0.00      0.00      0.00        32
+
+                           accuracy                           0.53       948
+                          macro avg       0.45      0.21      0.23       948
+                       weighted avg       0.55      0.53      0.47       948
